@@ -20,7 +20,7 @@ module.exports = Dokomo => {
     let indirect = 0;
 
     for (const counter of document.querySelectorAll('.app-navigation-entry__counter')) {
-      const entryCounter = Dokomo.safeParseInt(counter.textContent) : 0;
+      const entryCounter = counter ? Dokomo.safeParseInt(counter.textContent) : 0;
       indirect += entryCounter;
     }
 
