@@ -1,0 +1,14 @@
+{
+  "id": "nextcloud-talk",
+  "name": "Nextcloud Talk",
+  "version": "1.3.2",
+  "license": "MIT",
+  "config": {
+    "hasNotificationSound": true,
+    "hasIndirectMessages": true,
+    "hasTeamId": true,
+    "urlInputPrefix": "https://",
+    "urlInputSuffix": "/apps/spreed/",
+    "serviceURL": "https://{teamId}/apps/spreed/"
+  }
+}

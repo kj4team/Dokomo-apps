@@ -1,0 +1,9 @@
+{
+  "id": "icq",
+  "name": "ICQ",
+  "version": "1.2.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://web.icq.com"
+  }
+}

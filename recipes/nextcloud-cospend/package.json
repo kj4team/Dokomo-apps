@@ -1,0 +1,14 @@
+{
+  "id": "nextcloud-cospend",
+  "name": "Nextcloud Cospend",
+  "version": "1.2.1",
+  "license": "MIT",
+  "config": {
+    "hasNotificationSound": true,
+    "hasIndirectMessages": true,
+    "hasTeamId": true,
+    "urlInputPrefix": "https://",
+    "urlInputSuffix": "/apps/cospend/",
+    "serviceURL": "https://{teamId}/apps/cospend/"
+  }
+}

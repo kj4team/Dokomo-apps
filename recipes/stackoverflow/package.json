@@ -1,0 +1,10 @@
+{
+  "id": "stackoverflow",
+  "name": "Stack Overflow",
+  "version": "0.1.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://stackoverflow.com",
+    "hasNotificationSound": true
+  }
+}

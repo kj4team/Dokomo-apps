@@ -1,0 +1,10 @@
+{
+  "id": "googledrive",
+  "name": "Google Drive",
+  "version": "2.2.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://drive.google.com/drive/my-drive",
+    "hasNotificationSound": true
+  }
+}

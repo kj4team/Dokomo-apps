@@ -1,0 +1,10 @@
+{
+  "id": "google-duo",
+  "name": "Google Duo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://duo.google.com/?web",
+    "hasNotificationSound": true
+  }
+}

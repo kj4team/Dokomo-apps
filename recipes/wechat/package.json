@@ -1,0 +1,11 @@
+{
+  "id": "wechat",
+  "name": "WeChat",
+  "version": "1.2.0",
+  "license": "MIT",
+  "config": {
+    "hasNotificationSound": true,
+    "hasIndirectMessages": true,
+    "serviceURL": "https://web.wechat.com/"
+  }
+}

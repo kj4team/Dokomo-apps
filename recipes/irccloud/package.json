@@ -1,0 +1,10 @@
+{
+  "id": "irccloud",
+  "name": "IRCCloud",
+  "version": "1.2.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://www.irccloud.com",
+    "hasIndirectMessages": true
+  }
+}

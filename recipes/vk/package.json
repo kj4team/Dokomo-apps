@@ -1,0 +1,9 @@
+{
+  "id": "vk",
+  "name": "VK",
+  "version": "1.2.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://www.vk.com"
+  }
+}

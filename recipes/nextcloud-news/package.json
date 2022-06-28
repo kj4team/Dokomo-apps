@@ -1,0 +1,13 @@
+{
+  "id": "nextcloud-news",
+  "name": "Nextcloud News",
+  "version": "1.2.1",
+  "license": "MIT",
+  "config": {
+    "hasNotificationSound": true,
+    "hasTeamId": true,
+    "urlInputPrefix": "https://",
+    "urlInputSuffix": "/apps/news/",
+    "serviceURL": "https://{teamId}/apps/news/"
+  }
+}

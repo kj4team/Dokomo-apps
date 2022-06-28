@@ -1,0 +1,9 @@
+{
+  "id": "standardnotes",
+  "name": "StandardNotes",
+  "version": "1.2.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://app.standardnotes.org/"
+  }
+}

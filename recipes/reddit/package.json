@@ -1,0 +1,10 @@
+{
+  "id": "reddit",
+  "name": "Reddit",
+  "version": "1.2.0",
+  "license": "MIT",
+  "config": {
+    "hasIndirectMessages": true,
+    "serviceURL": "https://www.reddit.com/"
+  }
+}
