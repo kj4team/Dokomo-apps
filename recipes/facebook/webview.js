@@ -6,7 +6,6 @@ module.exports = Dokomo => {
     for (const elm of elements) {
       // if (elm !== null) {
         count = count + Dokomo.safeParseInt(elm.textContent);
-        console.log('KalDebug', Dokomo.safeParseInt(elm.textContent));
       // }
     }
 
