@@ -1,20 +1,13 @@
 module.exports = Dokomo => {
   const getNotifications = function getNotifications() {
     let count = 0;
+    const elements  = document.querySelectorAll('.bp9cbjyn.bwm1u5wc.pq6dq46d.datstx6m.taijpn5t.jb3vyjys.jxrgncrl.qt6c0cv9.qnrpqo6b.k4urcfbm');
 
-    const elements = [
-      document.querySelector('#requestsCountValue'),
-      // document.getElementById('mercurymessagesCountValue'),
-      document.querySelector('#notificationsCountValue'),
-      document.querySelector(
-        '.k4urcfbm.qnrpqo6b.qt6c0cv9.jxrgncrl.jb3vyjys.taijpn5t.datstx6m.pq6dq46d.ljqsnud1.bp9cbjyn',
-      ),
-    ];
-
-    for (const element of elements) {
-      if (element !== null) {
-        count += Dokomo.safeParseInt(element.textContent);
-      }
+    for (const elm of elements) {
+      // if (elm !== null) {
+        count = count + Dokomo.safeParseInt(elm.textContent);
+        console.log('KalDebug', Dokomo.safeParseInt(elm.textContent));
+      // }
     }
 
     Dokomo.setBadge(count);
