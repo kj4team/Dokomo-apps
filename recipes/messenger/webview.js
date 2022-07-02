@@ -20,7 +20,16 @@ module.exports = Dokomo => {
     Dokomo.setBadge(count);
   };
 
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const hideInstallMessage = () => {
+    const installMessage = document.querySelector('.usczdcwk');
+    if (installMessage.style.display != 'none') {
+      installMessage.style.display = 'none'
+    }
+  }
+
   Dokomo.loop(getMessages);
+  Dokomo.loop(hideInstallMessage);
 
   localStorage.setItem(
     '_cs_desktopNotifsEnabled',
