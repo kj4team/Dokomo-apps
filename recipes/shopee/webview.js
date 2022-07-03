@@ -14,20 +14,24 @@ module.exports = Dokomo => {
 
   // let isRemoveNav = false;
   // const removeNav = () => {
-    waitForElm('#shopee-mini-chat-embedded').then(() => {
-      console.log('Element is ready');
-      const head = document.querySelector('.FAQGyh');
-      head.parentNode.removeChild(head);
-    });
+  waitForElm('#shopee-mini-chat-embedded').then(() => {
+    console.log('Element is ready');
+    const head = document.querySelector('.FAQGyh');
+    head.parentNode.removeChild(head);
+  });
 
-    const dokomoNav = document.createElement('div');
-    dokomoNav.classList.add('dokomo-nav');
-    dokomoNav.innerHTML = `<div class="dokomo-nav-inner"><div class="src-pages-Entry-index__logo-wrapper--IqLfz"><div class="icon-home"><a href="/">🏠</a></div><div class="icon"><a href="javascript:history.back()">⬅️</a></div><div class="icon"><a href="javascript:history.forward()">➡️</a></div></div></div>`;
-    // dokomoNav.appendChild(dokomo_content);
+  waitForElm('.cffkI8').then((e) => {
+    e.style.display = "none";
+  });
 
-    waitForElm('#shopee-mini-chat-embedded').then((elm) => {
-      insertAfter(elm, dokomoNav);
-    });
+  const dokomoNav = document.createElement('div');
+  dokomoNav.classList.add('dokomo-nav');
+  dokomoNav.innerHTML = `<div class="dokomo-nav-inner"><div class="src-pages-Entry-index__logo-wrapper--IqLfz"><div class="icon-home"><a href="/">🏠</a></div><div class="icon"><a href="javascript:history.back()">⬅️</a></div><div class="icon"><a href="javascript:history.forward()">➡️</a></div></div></div>`;
+  // dokomoNav.appendChild(dokomo_content);
+
+  waitForElm('#shopee-mini-chat-embedded').then((elm) => {
+    insertAfter(elm, dokomoNav);
+  });
 
   function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
