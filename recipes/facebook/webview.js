@@ -5,7 +5,7 @@ module.exports = Dokomo => {
 
     for (const elm of elements) {
       // if (elm !== null) {
-        count = count + Dokomo.safeParseInt(elm.textContent);
+      count = count + Dokomo.safeParseInt(elm.textContent);
       // }
     }
 
@@ -31,6 +31,27 @@ module.exports = Dokomo => {
   };
 
   Dokomo.loop(loopFunc);
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="http"]');
+
+    if (link) {
+      const url = link.getAttribute('href');
+      const isExt = link.getAttribute('rel');
+
+      if (!Dokomo.isImage(url)) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        // if (settings.trapLinkClicks === true) {
+        if (isExt === null) {
+          window.location.href = url.toString();
+        } else {
+          Dokomo.openNewWindow(url);
+        }
+      }
+    }
+  }, true);
 
   const path = require('path');
   Dokomo.injectJSUnsafe(path.join(__dirname, 'webview-unsafe.js'))

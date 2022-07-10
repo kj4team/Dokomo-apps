@@ -17,11 +17,7 @@ module.exports = (Dokomo, settings) => {
         event.preventDefault();
         event.stopPropagation();
 
-        if (settings.trapLinkClicks === true) {
-          window.location.href = url;
-        } else {
-          Dokomo.openNewWindow(url);
-        }
+        Dokomo.openNewWindow(url);
       }
     }
   }, true);
