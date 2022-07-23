@@ -36,6 +36,8 @@ module.exports = Dokomo => {
     Dokomo.setBadge(count, indirectCount);
   };
 
+  Dokomo.injectJSUnsafe(_path.default.join(__dirname, 'webview-unsafe.js'));
+
   const getActiveDialogTitle = () => {
     const element = document.querySelector('header .emoji-texttt');
 
@@ -49,6 +51,13 @@ module.exports = Dokomo => {
 
   window.addEventListener('beforeunload', async () => {
     Dokomo.releaseServiceWorkers();
+  });
+  Dokomo.handleDarkMode((isEnabled) => {
+    if (isEnabled) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   });
 
   Dokomo.loop(loopFunc);

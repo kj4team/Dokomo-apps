@@ -22,8 +22,7 @@ module.exports = (Dokomo, settings) => {
     if (/\/owa/.test(location.pathname)) {
       // classic app
       directUnreadCount = Dokomo.safeParseInt(
-        document.querySelectorAll("span[title*='Inbox'] + div > span")[0]
-          .textContent,
+        document.querySelectorAll("span[title*='Inbox'] + div > span")[0].textContent,
       );
     } else {
       // new app

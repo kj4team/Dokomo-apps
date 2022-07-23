@@ -34,7 +34,7 @@ module.exports = (Dokomo, settings) => {
     if (link || button) {
       const url = link ? link.getAttribute('href') : button.getAttribute('title');
 
-      if (!Dokomo.isImage(url)) {
+      if (!Dokomo.isImage(link)) {
         event.preventDefault();
         event.stopPropagation();
 

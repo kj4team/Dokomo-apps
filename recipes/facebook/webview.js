@@ -37,15 +37,23 @@ module.exports = Dokomo => {
 
     if (link) {
       const url = link.getAttribute('href');
+      const button = event.target.closest('button[title^="http"]');
       const isExt = link.getAttribute('rel');
 
-      if (!Dokomo.isImage(url)) {
+      const skipDomains = [/^https:.*?facebook\.com\//i];
+
+      let stayInsideFacebook;
+      skipDomains.every(skipDomain => {
+        stayInsideFacebook = skipDomain.test(url);
+        return !stayInsideFacebook;
+      });
+
+      if (!Dokomo.isImage(link) && !stayInsideFacebook) {
         event.preventDefault();
         event.stopPropagation();
 
-        // if (settings.trapLinkClicks === true) {
-        if (isExt === null) {
-          window.location.href = url.toString();
+        if (settings.trapLinkClicks === true) {
+          window.location.href = url;
         } else {
           Dokomo.openNewWindow(url);
         }

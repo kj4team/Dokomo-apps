@@ -1,3 +1,9 @@
+function hideInstallMessage() {
+  const installMessage = document.querySelector('.usczdcwk');
+  if (installMessage) {
+    installMessage.style.display = installMessage.style.display != 'none' ? 'none': installMessage.style.display;
+  }
+}
 module.exports = Dokomo => {
   const getMessages = () => {
     let count = [...document.querySelectorAll('.bp9cbjyn.j83agx80.owycx6da:not(.btwxx1t3)')]
@@ -20,16 +26,12 @@ module.exports = Dokomo => {
     Dokomo.setBadge(count);
   };
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  const hideInstallMessage = () => {
-    const installMessage = document.querySelector('.usczdcwk');
-    if (installMessage.style.display != 'none') {
-      installMessage.style.display = 'none'
-    }
-  }
+  const loopRoutine = () => {
+    getMessages()
+    hideInstallMessage()
+  };
 
-  Dokomo.loop(getMessages);
-  Dokomo.loop(hideInstallMessage);
+  Dokomo.loop(loopRoutine);
 
   localStorage.setItem(
     '_cs_desktopNotifsEnabled',

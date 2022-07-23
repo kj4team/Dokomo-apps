@@ -33,8 +33,14 @@ module.exports = (Dokomo, settings) => {
 
     if (link || button) {
       const url = link ? link.getAttribute('href') : button.getAttribute('title');
+      const skipDomains = [/^https:\/\/discordapp\.com\/channels\//i, /^https:\/\/discord\.com\/channels\//i];
+      let stayInsideDiscord;
+      skipDomains.every(skipDomain => {
+        stayInsideDiscord = skipDomain.test(url);
+        return !stayInsideDiscord;
+      });
 
-      if (!Dokomo.isImage(url)) {
+      if (!Dokomo.isImage(link) && !stayInsideDiscord) {
         event.preventDefault();
         event.stopPropagation();
 
