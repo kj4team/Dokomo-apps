@@ -8,6 +8,7 @@ module.exports = Dokomo => {
       '.app-navigation-entry-utils-counter.highlighted',
     );
     const direct = directSelector ? Dokomo.safeParseInt(directSelector.length) : 0;
+
     const indirectSelector = document.querySelectorAll(
       '.app-navigation-entry-utils-counter:not(.highlighted)',
     );

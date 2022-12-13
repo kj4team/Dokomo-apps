@@ -12,10 +12,12 @@ links in the top menu and disable them */
   cursor: default;
   pointer-events: none;
 }
+
 /* Hide all settings options, except the option to log out */
 #settings #expanddiv li:not([data-id='logout']) {
   display: none;
 }
+
 /* Fix the margin of the dropdown */
 #settings #expanddiv,
 #settings #expanddiv > ul {
@@ -26,10 +28,12 @@ links in the top menu and disable them */
 #more-apps {
   display: none !important;
 }
+
 /* Hide notifications that are not related to Carnet */
 .notifications .notification-wrapper .notification:not([object_type="carnet"]) {
   display: none;
 }
+
 /* Hide "Dismiss all notifications" as this action will dismiss also hidden
 notifications */
 .notification-wrapper .dismiss-all {

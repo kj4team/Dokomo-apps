@@ -6,11 +6,9 @@ module.exports = Dokomo => {
     const directCount = directCountElement
     	? Dokomo.safeParseInt(directCountElement.textContent)
     	: 0;
-
     const indirectCount = document.querySelector(
       '[class*="mail-status unread"]:not([hidden])',
     ) ? 1 : 0;
-
     Dokomo.setBadge(directCount, indirectCount);
   };
 

@@ -18,11 +18,10 @@ module.exports = (Dokomo, settings) => {
   const getMessages = () => {
     let directUnreadCount = 0;
     let indirectUnreadCount = 0;
-
     if (/\/owa/.test(location.pathname)) {
       // classic app
       directUnreadCount = Dokomo.safeParseInt(
-        document.querySelectorAll("span[title*='Inbox'] + div > span")[0].textContent,
+        document.querySelectorAll("span[title*='Inbox'] + div > span")[0]?.textContent
       );
     } else {
       // new app
@@ -36,6 +35,5 @@ module.exports = (Dokomo, settings) => {
 
     Dokomo.setBadge(directUnreadCount, indirectUnreadCount);
   };
-
   Dokomo.loop(getMessages);
 };

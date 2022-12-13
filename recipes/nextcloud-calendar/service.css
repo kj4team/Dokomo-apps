@@ -12,10 +12,12 @@ links and disable them */
     cursor:default;
     pointer-events: none;
 }
+
 /* Hide all settings options, except the option to log out */
 #settings #expanddiv li:not([data-id='logout']) {
   display: none;
 }
+
 /* Fix the margin of the dropdown */
 #settings #expanddiv,
 #settings #expanddiv > ul {

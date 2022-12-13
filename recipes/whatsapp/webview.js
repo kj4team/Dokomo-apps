@@ -1,47 +1,68 @@
 const _path = _interopRequireDefault(require('path'));
 
 function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : {default: obj};
 }
 
-module.exports = Dokomo => {
+module.exports = Ferdium => {
+  let dbCache
+
   const getMessages = () => {
-    let count = 0;
-    let indirectCount = 0;
-
-    const parentChatElem = [
-      ...document.querySelectorAll('div[aria-label]'),
-    ].sort((a, b) => (a.offsetHeight < b.offsetHeight ? 1 : -1))[0];
-    if (!parentChatElem) {
-      return;
-    }
-
-    const unreadSpans = parentChatElem.querySelectorAll('span[aria-label]');
-    for (const unreadElem of unreadSpans) {
-      const countValue = Dokomo.safeParseInt(unreadElem.textContent);
-      if (countValue > 0) {
-        if (
-          !unreadElem.parentNode.previousSibling ||
-          unreadElem.parentNode.previousSibling.querySelectorAll(
-            '[data-icon=muted]',
-          ).length === 0
-        ) {
-          count += countValue;
-        } else {
-          indirectCount += countValue;
+    if(!dbCache) {
+      const dbsPromise = indexedDB.databases()
+      dbsPromise.then((databases) => {
+        for(let index in databases) {
+          //Wait for model-storage db to be available before calling indexedDB.open(). This is to make sure whatsapp created the model-storage DB
+          if(databases[index].name === "model-storage") {
+            const request = window.indexedDB.open("model-storage");
+            request.onsuccess = () => {
+              dbCache = request.result;
+              //This will be called when db.delete is triggered, we need to close and set dbCache to null to trigger lookup again
+              dbCache.onversionchange = () => {
+                dbCache.close()
+                dbCache = null
+              };
+            }
+            request.addEventListener('error', () => {
+              console.error("Opening model-storage database failed:", event);
+            })
+          }
         }
-      }
+      })
+    } else {
+      let unreadCount = 0;
+      let unreadMutedCount = 0;
+
+      const txn = dbCache.transaction('chat', 'readonly');
+      const store = txn.objectStore('chat');
+      const query = store.getAll();
+      query.onsuccess = (event) => {
+        for (const chat of event.target.result) {
+          if (chat.unreadCount > 0) {
+            if (chat.muteExpiration === 0) {
+              unreadCount += chat.unreadCount;
+            } else {
+              unreadMutedCount += chat.unreadCount;
+            }
+          }
+        }
+
+        Ferdium.setBadge(unreadCount, unreadMutedCount);
+      };
+
+      query.addEventListener('error', (event) => {
+        console.error("Loading data from database failed:", event);
+      })
     }
+  }
 
-    Dokomo.setBadge(count, indirectCount);
-  };
-
-  Dokomo.injectJSUnsafe(_path.default.join(__dirname, 'webview-unsafe.js'));
+  // inject webview hacking script
+  Ferdium.injectJSUnsafe(_path.default.join(__dirname, 'webview-unsafe.js'));
 
   const getActiveDialogTitle = () => {
     const element = document.querySelector('header .emoji-texttt');
 
-    Dokomo.setDialogTitle(element ? element.textContent : '');
+    Ferdium.setDialogTitle(element ? element.textContent : '');
   };
 
   const loopFunc = () => {
@@ -50,17 +71,20 @@ module.exports = Dokomo => {
   };
 
   window.addEventListener('beforeunload', async () => {
-    Dokomo.releaseServiceWorkers();
+    Ferdium.releaseServiceWorkers();
   });
-  Dokomo.handleDarkMode((isEnabled) => {
+
+  Ferdium.handleDarkMode((isEnabled) => {
+
     if (isEnabled) {
       document.body.classList.add('dark');
     } else {
       document.body.classList.remove('dark');
     }
+
   });
 
-  Dokomo.loop(loopFunc);
+  Ferdium.loop(loopFunc);
 
-  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
+  Ferdium.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

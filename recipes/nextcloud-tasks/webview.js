@@ -1,6 +1,6 @@
 const _path = _interopRequireDefault(require('path'));
-function _interopRequireDefault(obj) {
 
+function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
@@ -10,6 +10,7 @@ module.exports = Dokomo => {
       '.app-navigation-entry-utils-counter.highlighted',
     );
     const direct = directSelector ? Dokomo.safeParseInt(directSelector.length) : 0;
+
     const indirectSelector = document.querySelectorAll(
       '.app-navigation-entry-utils-counter:not(.highlighted)',
     );

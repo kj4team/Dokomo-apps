@@ -1,12 +1,37 @@
 function hideInstallMessage() {
   const installMessage = document.querySelector('.usczdcwk');
   if (installMessage) {
-    installMessage.style.display = installMessage.style.display != 'none' ? 'none': installMessage.style.display;
+    installMessage.style.display =
+      installMessage.style.display != 'none'
+        ? 'none'
+        : installMessage.style.display;
   }
 }
+
 module.exports = Dokomo => {
   const getMessages = () => {
-    let count = [...document.querySelectorAll('.bp9cbjyn.j83agx80.owycx6da:not(.btwxx1t3)')]
+    let count = 0;
+    let newMessengerUI = false;
+
+    /*
+     * try the counting with the new UI
+     */
+    for (let href of ['/', '/requests/', '/marketplace/']) {
+      const elem = document.querySelector(`a[href^='${href}t/'][role='link'][tabindex='0']`).ariaLabel;
+      if (elem) {
+        newMessengerUI = true;
+        const match = elem.match(/(\d+)/g);
+        if (match) {
+          count += Ferdium.safeParseInt(match[0]);
+        }
+      }
+    }
+
+    /*
+     * do the old counting if the interface is not the last one
+     */
+    if (!newMessengerUI) {
+      count = [...document.querySelectorAll('.bp9cbjyn.j83agx80.owycx6da:not(.btwxx1t3)')]
       .map(elem => {
         const hasPing = !!elem.querySelector('.pq6dq46d.is6700om.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.s45kfl79.emlxlaya.bkmhp75w.spb7xbtv.cyypbtt7.fwizqjfa');
         const isMuted = !!elem.querySelector('.a8c37x1j.ms05siws.l3qrxjdp.b7h9ocf4.trssfv1o');
@@ -22,13 +47,14 @@ module.exports = Dokomo => {
     if (messageRequestsElement) {
       count += Dokomo.safeParseInt(messageRequestsElement.textContent);
     }
+    }
 
     Dokomo.setBadge(count);
   };
 
   const loopRoutine = () => {
-    getMessages()
-    hideInstallMessage()
+    getMessages();
+    hideInstallMessage();
   };
 
   Dokomo.loop(loopRoutine);

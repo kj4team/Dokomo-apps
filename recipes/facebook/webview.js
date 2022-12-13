@@ -1,12 +1,10 @@
 module.exports = Dokomo => {
   const getNotifications = function getNotifications() {
     let count = 0;
-    const elements  = document.querySelectorAll('.bp9cbjyn.bwm1u5wc.pq6dq46d.datstx6m.taijpn5t.jb3vyjys.jxrgncrl.qt6c0cv9.qnrpqo6b.k4urcfbm');
 
-    for (const elm of elements) {
-      // if (elm !== null) {
-      count = count + Dokomo.safeParseInt(elm.textContent);
-      // }
+    const queryList = document.querySelectorAll('.bp9cbjyn.bwm1u5wc.pq6dq46d.datstx6m.taijpn5t.jb3vyjys.jxrgncrl.qt6c0cv9.qnrpqo6b.k4urcfbm');
+    for (const element of queryList) {
+      count += Dokomo.safeParseInt(element.textContent);
     }
 
     Dokomo.setBadge(count);
@@ -40,11 +38,12 @@ module.exports = Dokomo => {
       const button = event.target.closest('button[title^="http"]');
       const isExt = link.getAttribute('rel');
 
-      const skipDomains = [/^https:.*?facebook\.com\//i];
+      const skipDomains = [/^https:\/\/facebook\.com\//i, /^https:\/\/www.facebook.com\//i, /^https:\/\/m.facebook.com\//i];
 
       let stayInsideFacebook;
       skipDomains.every(skipDomain => {
         stayInsideFacebook = skipDomain.test(url);
+        console.warn("Open with Browser", url, stayInsideFacebook);
         return !stayInsideFacebook;
       });
 
