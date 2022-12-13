@@ -1,9 +1,9 @@
-module.exports = Ferdium => {
+module.exports = Dokomo => {
   const getMessages = () => {
     const { title } = document;
     const regex = /\d+/;
-    Ferdium.setBadge(regex.test(title) ? Number(regex.exec(title)[0]) : 0);
+    Dokomo.setBadge(regex.test(title) ? Number(regex.exec(title)[0]) : 0);
   };
 
-  Ferdium.loop(getMessages);
+  Dokomo.loop(getMessages);
 };

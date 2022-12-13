@@ -4,6 +4,6 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
-module.exports = Ferdium => {
-  Ferdium.injectCSS(_path.default.join(__dirname, 'style.css'));
+module.exports = Dokomo => {
+  Dokomo.injectCSS(_path.default.join(__dirname, 'style.css'));
 };

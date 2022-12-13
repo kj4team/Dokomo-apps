@@ -22,7 +22,7 @@ module.exports = Dokomo => {
         newMessengerUI = true;
         const match = elem.match(/(\d+)/g);
         if (match) {
-          count += Ferdium.safeParseInt(match[0]);
+          count += Dokomo.safeParseInt(match[0]);
         }
       }
     }
