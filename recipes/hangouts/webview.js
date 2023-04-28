@@ -1,7 +1,8 @@
 module.exports = Dokomo => {
   const getMessages = () => {
     // get unread messages
-    const count = document.querySelector('#hangout-landing-chat iframe').contentWindow.document.querySelectorAll('.ee').length;
+    let count = 0;
+    for (const span of document.querySelectorAll('span[jsname=DW2nlb]'))  count += Dokomo.safeParseInt(span.textContent);
 
     // set Dokomo badge
     Dokomo.setBadge(count);
