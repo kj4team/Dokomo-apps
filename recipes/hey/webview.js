@@ -19,7 +19,7 @@ module.exports = Dokomo => {
         for (const p of postings) {
           if (
             p.nodeName == 'ARTICLE' &&
-            p.dataset.seen !== 'true'
+            p.getAttribute('data-seen') !== 'true'
           ) {
             unread++;
           }

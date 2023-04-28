@@ -17,7 +17,7 @@ module.exports = Dokomo => {
   waitForElm('#shopee-mini-chat-embedded').then(() => {
     console.log('Element is ready');
     const head = document.querySelector('.FAQGyh');
-    head.remove();
+    head.parentNode.removeChild(head);
   });
 
   waitForElm('.cffkI8').then((e) => {
@@ -33,7 +33,6 @@ module.exports = Dokomo => {
     insertAfter(elm, dokomoNav);
   });
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
   function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
@@ -45,7 +44,7 @@ module.exports = Dokomo => {
         return resolve(document.querySelector(selector));
       }
 
-      const observer = new MutationObserver(() => {
+      const observer = new MutationObserver(mutations => {
         if (document.querySelector(selector)) {
           resolve(document.querySelector(selector));
           observer.disconnect();
