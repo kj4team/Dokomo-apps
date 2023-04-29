@@ -29,37 +29,4 @@ module.exports = Dokomo => {
   };
 
   Dokomo.loop(loopFunc);
-
-  document.addEventListener('click', event => {
-    const link = event.target.closest('a[href^="http"]');
-
-    if (link) {
-      const url = link.getAttribute('href');
-      const button = event.target.closest('button[title^="http"]');
-      const isExt = link.getAttribute('rel');
-
-      const skipDomains = [/^https:\/\/facebook\.com\//i, /^https:\/\/www.facebook.com\//i, /^https:\/\/m.facebook.com\//i];
-
-      let stayInsideFacebook;
-      skipDomains.every(skipDomain => {
-        stayInsideFacebook = skipDomain.test(url);
-        console.warn("Open with Browser", url, stayInsideFacebook);
-        return !stayInsideFacebook;
-      });
-
-      if (!Dokomo.isImage(link) && !stayInsideFacebook) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (settings.trapLinkClicks === true) {
-          window.location.href = url;
-        } else {
-          Dokomo.openNewWindow(url);
-        }
-      }
-    }
-  }, true);
-
-  const path = require('path');
-  Dokomo.injectJSUnsafe(path.join(__dirname, 'webview-unsafe.js'))
 };
