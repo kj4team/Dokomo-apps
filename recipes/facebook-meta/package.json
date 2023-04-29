@@ -1,0 +1,9 @@
+{
+  "id": "facebook-meta",
+  "name": "Facebook Meta",
+  "version": "1.0.0",
+  "license": "MIT",
+  "config": {
+    "serviceURL": "https://business.facebook.com"
+  }
+}
