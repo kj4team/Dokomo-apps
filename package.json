@@ -1,6 +1,7 @@
 {
   "name": "dokomo-recipes",
   "version": "1.0.1",
+  "description": "Apps for Dokomo",
   "directories": {
     "doc": "docs"
   },
@@ -19,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kj4team/dokomo-app.git"
+    "url": "git+https://github.com/kj4team/dokomo-apps.git"
   },
   "keywords": [
     "dokomo",
