@@ -211,6 +211,9 @@ importers:
   recipes/facebook:
     specifiers: {}
 
+  recipes/facebook-meta:
+    specifiers: {}
+
   recipes/facebookpages:
     specifiers: {}
 
@@ -875,6 +878,9 @@ importers:
     specifiers: {}
 
   recipes/zalo:
+    specifiers: {}
+
+  recipes/zalo-oa:
     specifiers: {}
 
   recipes/zammad:
