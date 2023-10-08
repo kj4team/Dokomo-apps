@@ -1,13 +1,18 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = Dokomo => {
   const getMessages = () => {
-    let count = 0;
-
-    if (document.querySelectorAll('.mail-LabelList-Item_count').length > 1) {
-      count = Dokomo.safeParseInt(document.querySelectorAll('.mail-LabelList-Item_count')[1].textContent);
-    }
+    const button = document.querySelectorAll('[href="#unread"]')[0] ?? {};
+    const count = Dokomo.safeParseInt(button.textContent);
 
     Dokomo.setBadge(count);
   };
 
   Dokomo.loop(getMessages);
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

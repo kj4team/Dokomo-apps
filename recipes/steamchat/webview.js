@@ -1,3 +1,9 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = (Dokomo, settings) => {
   const getMessages = () => {
     // get new msg count
@@ -30,13 +36,19 @@ module.exports = (Dokomo, settings) => {
 
   Dokomo.loop(getMessages);
 
-  // TODO: See how this can be moved into the main dokomo app and sent as an ipc message for opening with a new window or same Dokomo recipe's webview based on user's preferences
-  document.addEventListener('click', event => {
-    const link = event.target.closest('a[href^="http"]');
-    const button = event.target.closest('button[title^="http"]');
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 
-    if (link || button) {
-      const url = link ? link.getAttribute('href') : button.getAttribute('title');
+  // TODO: See how this can be moved into the main dokomo app and sent as an ipc message for opening with a new window or same Dokomo recipe's webview based on user's preferences
+  document.addEventListener(
+    'click',
+    event => {
+      const link = event.target.closest('a[href^="http"]');
+      const button = event.target.closest('button[title^="http"]');
+
+      if (link || button) {
+        const url = link
+          ? link.getAttribute('href')
+          : button.getAttribute('title');
 
         event.preventDefault();
         event.stopPropagation();
@@ -46,6 +58,8 @@ module.exports = (Dokomo, settings) => {
         } else {
           Dokomo.openNewWindow(url);
         }
-    }
-  }, true);
+      }
+    },
+    true,
+  );
 };

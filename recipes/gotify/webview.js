@@ -1,12 +1,12 @@
-const _path = _interopRequireDefault(require('path'));
-
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = Dokomo => {
   const getMessages = () => {
-    let count = document.querySelectorAll('#messages').length;
+    const count = document.querySelectorAll('#messages').length;
 
     Dokomo.setBadge(count);
   };

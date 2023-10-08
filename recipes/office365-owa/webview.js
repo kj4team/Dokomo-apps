@@ -1,3 +1,9 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = (Dokomo, settings) => {
   const collectCounts = selector => {
     let unreadCount = 0;
@@ -21,7 +27,8 @@ module.exports = (Dokomo, settings) => {
     if (/\/owa/.test(location.pathname)) {
       // classic app
       directUnreadCount = Dokomo.safeParseInt(
-        document.querySelectorAll("span[title*='Inbox'] + div > span")[0]?.textContent
+        document.querySelectorAll("span[title*='Inbox'] + div > span")[0]
+          ?.textContent,
       );
     } else {
       // new app
@@ -36,4 +43,6 @@ module.exports = (Dokomo, settings) => {
     Dokomo.setBadge(directUnreadCount, indirectUnreadCount);
   };
   Dokomo.loop(getMessages);
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

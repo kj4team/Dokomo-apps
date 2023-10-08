@@ -1,1 +1,1 @@
-module.exports = Dokomo => Dokomo
+module.exports = Dokomo => Dokomo;

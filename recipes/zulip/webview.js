@@ -1,4 +1,17 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = Dokomo => {
+  function getUnreadCount(eltClassName) {
+    const elt = document.querySelectorAll(
+      `#global_filters .${eltClassName} .unread_count`,
+    )[0];
+    return elt === null ? 0 : Dokomo.safeParseInt(elt.textContent);
+  }
+
   const getMessages = () => {
     // All unread messages
     const unreadAll = getUnreadCount('top_left_all_messages');
@@ -17,8 +30,5 @@ module.exports = Dokomo => {
 
   Dokomo.loop(getMessages);
 
-  function getUnreadCount(eltClassName) {
-    const elt = document.querySelectorAll(`#global_filters .${eltClassName} .unread_count`)[0];
-    return elt == null ? 0 : Dokomo.safeParseInt(elt.textContent);
-  }
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

@@ -1,2 +1,1 @@
-"use strict";
-module.exports = Dokomo => Dokomo
+module.exports = Dokomo => Dokomo;

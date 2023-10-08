@@ -1,3 +1,5 @@
+/* Copied from: https://github.com/ducfilan/Dark-mode-Franz-Ferdi */
+
 :root:not(#z) {
   --teal: var(--ac-0);
   --teal-rgb: var(--ac-0-rgb);
@@ -456,6 +458,8 @@
   --bg-pos: center;
   --bg-rep: no-repeat;
   --version: "2.10.0 — June 6th, 2020";
+  --message: "Dark mode for Franz and Ferdi by Duc Filan, for more services: https://github.com/ducfilan/Dark-mode-Franz-Ferdi";
+  --changes: "\A\A All credits for @vednoc/dark-whatsapp";
 }
 
 @supports (scrollbar-width: thin) {

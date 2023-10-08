@@ -1,6 +1,8 @@
-const _path = _interopRequireDefault(require('path'));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const _path = _interopRequireDefault(require('path'));
 
 module.exports = Dokomo => {
   const getMessages = () => {
@@ -19,13 +21,17 @@ module.exports = Dokomo => {
 
     let indirect = 0;
 
-    for (const counter of document.querySelectorAll('.app-navigation-entry__counter')) {
-      const entryCounter = counter ? Dokomo.safeParseInt(counter.textContent) : 0;
+    for (const counter of document.querySelectorAll(
+      '.app-navigation-entry__counter',
+    )) {
+      const entryCounter = counter
+        ? Dokomo.safeParseInt(counter.textContent)
+        : 0;
       indirect += entryCounter;
     }
 
-    if (document.title.startsWith("*")) {
-      indirect++;
+    if (document.title.startsWith('*')) {
+      indirect += 1;
     }
 
     Dokomo.setBadge(direct, indirect);

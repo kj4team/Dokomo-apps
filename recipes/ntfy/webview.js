@@ -1,6 +1,12 @@
-module.exports = (Dokomo) => {
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
+module.exports = Dokomo => {
   const getMessages = () => {
-    let msgRaw = document.title.match(/\(\d*\)/);
+    const msgRaw = document.title.match(/\(\d*\)/);
     let messages = 0;
 
     if (msgRaw) {
@@ -8,7 +14,9 @@ module.exports = (Dokomo) => {
     }
 
     Dokomo.setBadge(messages, 0);
-  }
+  };
 
   Dokomo.loop(getMessages);
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

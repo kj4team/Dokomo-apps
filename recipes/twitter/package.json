@@ -1,10 +1,13 @@
 {
   "id": "twitter",
-  "name": "Twitter",
-  "version": "1.3.0",
+  "name": "X",
+  "version": "1.4.1",
   "license": "MIT",
+  "aliases": [
+    "Twitter"
+  ],
   "config": {
-    "serviceURL": "https://twitter.com",
+    "serviceURL": "https://x.com",
     "hasNotificationSound": true
   }
 }
