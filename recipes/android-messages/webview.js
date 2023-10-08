@@ -1,3 +1,9 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 setTimeout(() => {
   const elem = document.querySelector('#af-error-container');
 
@@ -39,4 +45,6 @@ module.exports = (Dokomo, settings) => {
   } else {
     localStorage.setItem('dark_mode_enabled', 'false');
   }
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

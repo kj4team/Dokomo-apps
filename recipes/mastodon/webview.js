@@ -1,3 +1,9 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = Dokomo => {
   let latestStatement = $('.status time').attr('datetime');
   let latestNotify = $($('.notification__message span').get(0)).text();
@@ -12,12 +18,12 @@ module.exports = Dokomo => {
   const getMessages = () => {
     let reply = 0;
     const ln = $($('.notification__message span').get(0)).text();
-    if (ln != latestNotify) {
+    if (ln !== latestNotify) {
       reply = 1;
     }
     let unread = 0;
     const ls = $('.status time').attr('datetime');
-    if (ls != latestStatement) {
+    if (ls !== latestStatement) {
       unread = 1;
     }
 
@@ -25,4 +31,6 @@ module.exports = Dokomo => {
   };
 
   Dokomo.loop(getMessages);
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

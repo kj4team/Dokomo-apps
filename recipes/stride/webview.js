@@ -1,6 +1,8 @@
-const _path = _interopRequireDefault(require('path'));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const _path = _interopRequireDefault(require('path'));
 
 module.exports = Dokomo => {
   const getMessages = () => {
@@ -16,7 +18,7 @@ module.exports = Dokomo => {
         directCount += Math.max(1, +item.dataset.count);
       } else {
         // this will be the case for indirect messages
-        indirectCount++;
+        indirectCount += 1;
       }
     }
 

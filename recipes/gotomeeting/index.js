@@ -1,5 +1,9 @@
-module.exports = Dokomo => class Gotomeeting extends Dokomo {
+module.exports = Dokomo =>
+  class Gotomeeting extends Dokomo {
   overrideUserAgent() {
-    return window.navigator.userAgent.replace(/(Dokomo|Electron)\/\S+ \([^)]+\)/g, '');
+      return window.navigator.userAgent.replaceAll(
+        /(Dokomo|Electron)\/\S+ \([^)]+\)/g,
+        '',
+      );
   }
 };

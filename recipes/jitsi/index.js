@@ -1,5 +1,8 @@
-module.exports = Dokomo => class Jitsi extends Dokomo {
+module.exports = Dokomo =>
+  class Jitsi extends Dokomo {
   overrideUserAgent() {
-    return window.navigator.userAgent.replace(/(Dokomo|Electron)\/\S+ \([^)]+\)/g, '').trim();
+      return window.navigator.userAgent
+        .replaceAll(/(Dokomo|Electron)\/\S+ \([^)]+\)/g, '')
+        .trim();
   }
 };

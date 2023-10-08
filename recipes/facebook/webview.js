@@ -1,8 +1,16 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = Dokomo => {
   const getNotifications = function getNotifications() {
     let count = 0;
 
-    const queryList = document.querySelectorAll('.bp9cbjyn.bwm1u5wc.pq6dq46d.datstx6m.taijpn5t.jb3vyjys.jxrgncrl.qt6c0cv9.qnrpqo6b.k4urcfbm');
+    const queryList = document.querySelectorAll(
+      '.bp9cbjyn.bwm1u5wc.pq6dq46d.datstx6m.taijpn5t.jb3vyjys.jxrgncrl.qt6c0cv9.qnrpqo6b.k4urcfbm',
+    );
     for (const element of queryList) {
       count += Dokomo.safeParseInt(element.textContent);
     }
@@ -29,4 +37,6 @@ module.exports = Dokomo => {
   };
 
   Dokomo.loop(loopFunc);
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

@@ -1,8 +1,8 @@
-const _path = _interopRequireDefault(require('path'));
-
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
+
+const _path = _interopRequireDefault(require('path'));
 
 module.exports = Dokomo => {
   const getMessages = () => {
@@ -10,8 +10,11 @@ module.exports = Dokomo => {
     const inboxLinks = document.querySelectorAll('p.truncate');
     for (const label of inboxLinks){
       if (label.textContent) {
-        let inbox_count = label.nextSibling
-        countImportant = inbox_count == null ? 0 : Dokomo.safeParseInt(inbox_count.textContent);
+        const inboxCount = label.nextSibling;
+        countImportant =
+          inboxCount === null
+            ? 0
+            : Dokomo.safeParseInt(inboxCount.textContent);
 
         break;
       }

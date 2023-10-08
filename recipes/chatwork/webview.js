@@ -1,3 +1,9 @@
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const _path = _interopRequireDefault(require('path'));
+
 module.exports = Dokomo => {
   const getMessages = () => {
     let directCount = 0;
@@ -16,18 +22,16 @@ module.exports = Dokomo => {
 
       if (count > 0) {
         if (
-          !room
+          room
             .querySelector('img.sc-gqjmRU')
             .getAttribute('src')
             .includes('avatar')
         ) {
-          if (unreadBadgeHasMention) {
-            directCount++;
+          directCount += 1;
+        } else if (unreadBadgeHasMention) {
+          directCount += 1;
           } else {
-            indirectCount++;
-          }
-        } else {
-          directCount++;
+          indirectCount += 1;
         }
       }
     });
@@ -35,4 +39,6 @@ module.exports = Dokomo => {
   };
 
   Dokomo.loop(getMessages);
+
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

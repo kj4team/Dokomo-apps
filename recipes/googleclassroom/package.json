@@ -1,9 +1,0 @@
-{
-  "id": "googleclassroom",
-  "name": "Google Classroom",
-  "version": "1.2.1",
-  "license": "MIT",
-  "config": {
-    "serviceURL": "https://classroom.google.com/u/0/"
-  }
-}
