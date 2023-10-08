@@ -30,7 +30,7 @@ module.exports = Dokomo => {
           directCount += 1;
         } else if (unreadBadgeHasMention) {
           directCount += 1;
-          } else {
+        } else {
           indirectCount += 1;
         }
       }

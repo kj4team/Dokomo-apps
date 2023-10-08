@@ -10,7 +10,7 @@ module.exports = Dokomo => {
       .querySelector('#header-menu-notifications, .notifications')
       .querySelectorAll(
         '.notification-container .notification-wrapper .notification',
-    ).length;
+      ).length;
 
     Dokomo.setBadge(direct);
   };

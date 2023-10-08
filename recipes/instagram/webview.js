@@ -29,13 +29,13 @@ module.exports = Dokomo => {
     } else {
       isDarkModeParam
         ? (searchParams.delete('theme', 'dark'), (changedParams = true))
-      : null;
+        : null;
     }
 
     changedParams
       ? ((url.search = searchParams.toString()),
         (window.location.href = url.toString()))
-    : null;
+      : null;
   });
 
   Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));

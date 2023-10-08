@@ -1,7 +1,7 @@
 {
   "id": "shopee",
   "name": "Shopee",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "config": {
     "serviceURL": "https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F"

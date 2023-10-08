@@ -44,7 +44,7 @@ module.exports = Dokomo => {
           '.bp9cbjyn.j83agx80.owycx6da:not(.btwxx1t3)',
         ),
       ]
-      .map(elem => {
+        .map(elem => {
           const hasPing = !!elem.querySelector(
             '.pq6dq46d.is6700om.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.s45kfl79.emlxlaya.bkmhp75w.spb7xbtv.cyypbtt7.fwizqjfa',
           );
@@ -52,17 +52,17 @@ module.exports = Dokomo => {
             '.a8c37x1j.ms05siws.l3qrxjdp.b7h9ocf4.trssfv1o',
           );
 
-        return hasPing && !isMuted;
-      })
-      .reduce((prev, curr) => prev + curr, 0);
+          return hasPing && !isMuted;
+        })
+        .reduce((prev, curr) => prev + curr, 0);
 
-    /*
-     * add count of message requests on top of notification counter
-     */
-    const messageRequestsElement = document.querySelector('._5nxf');
-    if (messageRequestsElement) {
-      count += Dokomo.safeParseInt(messageRequestsElement.textContent);
-    }
+      /*
+       * add count of message requests on top of notification counter
+       */
+      const messageRequestsElement = document.querySelector('._5nxf');
+      if (messageRequestsElement) {
+        count += Dokomo.safeParseInt(messageRequestsElement.textContent);
+      }
     }
 
     Dokomo.setBadge(count);

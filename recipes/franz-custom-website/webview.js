@@ -11,25 +11,25 @@ module.exports = (Dokomo, settings) => {
   document.addEventListener(
     'click',
     event => {
-    const link = event.target.closest('a[href^="http"]');
-    const button = event.target.closest('button[title^="http"]');
+      const link = event.target.closest('a[href^="http"]');
+      const button = event.target.closest('button[title^="http"]');
 
-    if (link || button) {
+      if (link || button) {
         const url = link
           ? link.getAttribute('href')
           : button.getAttribute('title');
 
-      if (!Dokomo.isImage(link)) {
-        event.preventDefault();
-        event.stopPropagation();
+        if (!Dokomo.isImage(link)) {
+          event.preventDefault();
+          event.stopPropagation();
 
-        if (settings.trapLinkClicks === true) {
-          window.location.href = url;
-        } else {
-          Dokomo.openNewWindow(url);
+          if (settings.trapLinkClicks === true) {
+            window.location.href = url;
+          } else {
+            Dokomo.openNewWindow(url);
+          }
         }
       }
-    }
     },
     true,
   );

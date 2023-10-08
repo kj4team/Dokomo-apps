@@ -8,13 +8,11 @@ module.exports = Dokomo => {
   const getMessages = () => {
     let countImportant = 0;
     const inboxLinks = document.querySelectorAll('p.truncate');
-    for (const label of inboxLinks){
+    for (const label of inboxLinks) {
       if (label.textContent) {
         const inboxCount = label.nextSibling;
         countImportant =
-          inboxCount === null
-            ? 0
-            : Dokomo.safeParseInt(inboxCount.textContent);
+          inboxCount === null ? 0 : Dokomo.safeParseInt(inboxCount.textContent);
 
         break;
       }

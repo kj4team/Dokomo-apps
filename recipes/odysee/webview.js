@@ -6,16 +6,16 @@ const _path = _interopRequireDefault(require('path'));
 
 module.exports = Dokomo => {
   function getNotifications() {
-      let unreadNotifications = 0;
-      for (const notificationCounterElement of document.querySelectorAll(
+    let unreadNotifications = 0;
+    for (const notificationCounterElement of document.querySelectorAll(
       '.notification__count',
-          )) {
+    )) {
       unreadNotifications += Dokomo.safeParseInt(
         notificationCounterElement.textContent,
       );
-      }
+    }
 
-      Dokomo.setBadge(unreadNotifications);
+    Dokomo.setBadge(unreadNotifications);
   }
   Dokomo.loop(getNotifications);
 

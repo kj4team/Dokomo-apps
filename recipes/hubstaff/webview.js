@@ -13,7 +13,7 @@ module.exports = Dokomo => {
     const notificationContainers = document.querySelectorAll(
       '.notifications-number',
     );
-    if (notificationContainers){
+    if (notificationContainers) {
       directMessages = Dokomo.safeParseInt(
         notificationContainers[0].textContent,
       );

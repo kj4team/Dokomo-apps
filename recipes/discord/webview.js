@@ -30,10 +30,10 @@ module.exports = (Dokomo, settings) => {
   document.addEventListener(
     'click',
     event => {
-    const link = event.target.closest('a[href^="http"]');
-    const button = event.target.closest('button[title^="http"]');
+      const link = event.target.closest('a[href^="http"]');
+      const button = event.target.closest('button[title^="http"]');
 
-    if (link || button) {
+      if (link || button) {
         const url = link
           ? link.getAttribute('href')
           : button.getAttribute('title');
@@ -42,23 +42,23 @@ module.exports = (Dokomo, settings) => {
           /^https:\/\/discord\.com\/channels\//i,
         ];
 
-      let stayInsideDiscord;
-      skipDomains.every(skipDomain => {
-        stayInsideDiscord = skipDomain.test(url);
-        return !stayInsideDiscord;
-      });
+        let stayInsideDiscord;
+        skipDomains.every(skipDomain => {
+          stayInsideDiscord = skipDomain.test(url);
+          return !stayInsideDiscord;
+        });
 
-      if (!Dokomo.isImage(link) && !stayInsideDiscord) {
-        event.preventDefault();
-        event.stopPropagation();
+        if (!Dokomo.isImage(link) && !stayInsideDiscord) {
+          event.preventDefault();
+          event.stopPropagation();
 
-        if (settings.trapLinkClicks === true) {
-          window.location.href = url;
-        } else {
-          Dokomo.openNewWindow(url);
+          if (settings.trapLinkClicks === true) {
+            window.location.href = url;
+          } else {
+            Dokomo.openNewWindow(url);
+          }
         }
       }
-    }
     },
     true,
   );

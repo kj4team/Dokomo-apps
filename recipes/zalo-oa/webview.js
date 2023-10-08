@@ -11,4 +11,5 @@ module.exports = Dokomo => {
   };
 
   Dokomo.loop(getMessages);
+  Dokomo.injectCSS(_path.default.join(__dirname, 'service.css'));
 };

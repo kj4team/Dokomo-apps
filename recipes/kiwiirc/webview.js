@@ -18,13 +18,13 @@ module.exports = Dokomo => {
     const mentionedChannelsCount = kiwi.state.networks.reduce(
       (count, network) => {
         // eslint-disable-next-line no-param-reassign
-      return (count += network.buffers.filter(buffer => {
-        return (
-          !buffer.name.startsWith('*') &&
-          buffer.flags.unread !== 0 &&
-          buffer.flags.highlight
-        );
-      }).length);
+        return (count += network.buffers.filter(buffer => {
+          return (
+            !buffer.name.startsWith('*') &&
+            buffer.flags.unread !== 0 &&
+            buffer.flags.highlight
+          );
+        }).length);
       },
       0,
     );
